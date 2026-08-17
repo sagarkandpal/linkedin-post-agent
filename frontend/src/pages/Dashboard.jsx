@@ -98,7 +98,7 @@ function Dashboard() {
     setLastFeedbackUsed('')
     setStatus('Generating your post...')
 
-    const res = await fetch('http://localhost:8000/api/generate', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/generate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ function Dashboard() {
   const handleApprove = async () => {
     setStatus('Saving your post...')
 
-    const res = await fetch('http://localhost:8000/api/review', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/review`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ function Dashboard() {
 
     const previousDraft = draft
 
-    const res = await fetch('http://localhost:8000/api/review', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/review`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ function Dashboard() {
       return
     }
 
-    const res = await fetch('http://localhost:8000/api/posts', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/posts`, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },

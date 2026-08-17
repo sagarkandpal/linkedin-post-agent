@@ -27,7 +27,7 @@ function Register() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:8000/api/signup', {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
