@@ -1,0 +1,15 @@
+langgraph
+langchain
+langchain-groq
+python-dotenv
+
+langchain-tavily
+
+fastapi
+motor
+uvicorn
+pydantic
+python-jose[cryptography]
+passlib[bcrypt]
+
+slowapi
