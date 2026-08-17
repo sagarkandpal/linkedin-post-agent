@@ -1,5 +1,6 @@
 import json
 import uuid
+import os
 
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.responses import JSONResponse, StreamingResponse
@@ -43,16 +44,11 @@ app.add_exception_handler(
    )
 )
 
-app.add_middleware(SlowAPIASGIMiddleware)
-
-
-# React dev server (Vite) yahin se requests karega — CORS allow karna zaroori hai
-import os
-
-ALLOWED_ORIGINS = os.getenv(
-    "ALLOWED_ORIGINS",
-    "http://localhost:5173"
-).split(",")
+# CORS — pehle add karo, SlowAPI se pehle
+ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://sagarpost.netlify.app",
+]
 
 app.add_middleware(
     CORSMiddleware,
@@ -61,6 +57,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(SlowAPIASGIMiddleware)
 
 # Kaunse graph node pe kaunsa "status" message frontend ko dikhana hai
 STATUS_MESSAGES = {
