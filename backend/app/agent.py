@@ -12,7 +12,7 @@ from app.config import GROQ_API_KEY, TAVILY_API_KEY  # env vars already loaded b
 search_tool = TavilySearch(max_results=3)
 
 # ---------- LLMs ----------
-writer_llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.7)
+writer_llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0.3)
 
 # ---------- STATE ----------
 # Ye dict poore graph me pass hoti rehti hai, har node isko read/update karta hai.
